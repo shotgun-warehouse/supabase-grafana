@@ -1,18 +1,21 @@
+# fly.toml app configuration file generated for shotgun-db-monitoring on 2024-10-04T14:13:15+02:00
+#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'supabase-grafana-metrics'
+app = 'shotgun-db-monitoring'
+primary_region = 'cdg'
 
 [build]
 
 [[mounts]]
-  source = 'supabase_metrics_data'
+  source = 'shotgun_db_monitoring_data'
   destination = '/data'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = false
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
   processes = ['app']
